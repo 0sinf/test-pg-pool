@@ -93,3 +93,8 @@ export default pool;
    new Pool을 사용할 땐, pool 내에서 사용해야 했음.
 
 2. import pool from './pool'은 가져올 때마다 new Pool이 진행되는 것이 아니라 앱 실행 시 new Pool은 진행되고 생성된 pool을 가져오는 것이었음
+
+## 결과
+
+new Pool로 pool을 생성해도 커넥션 풀을 계속 생성하지 않는다. (생성된 풀을 사용한다.) \
+Pool을 생성하기 위한 Container를 생성할 필요 없다.
