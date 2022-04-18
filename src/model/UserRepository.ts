@@ -1,15 +1,19 @@
-import { Inject, Service } from "typedi";
-import Database from "./Database";
+import { Pool } from "pg";
+import { Service } from "typedi";
+import pool from "./pool";
 
 @Service()
 export default class UserRepository {
-  constructor(@Inject() private readonly database: Database) {
+  private readonly pool: Pool;
+
+  constructor() {
     console.log("Create UserRepository");
+    this.pool = pool;
   }
 
   async save(email: string, age: number) {
     console.log("Call save in UserRepository");
-    const client = await this.database.getPool().connect();
+    const client = await this.pool.connect();
     const result = await client.query(
       "INSERT INTO users(email, age) VALUES ($1, $2) RETURNING id",
       [email, age]

@@ -1,11 +1,8 @@
 import "reflect-metadata";
 import express from "express";
-import dotenv from "dotenv";
 
 import userRouter from "./controller/users";
 import postRouter from "./controller/posts";
-
-dotenv.config();
 
 const app = express();
 
